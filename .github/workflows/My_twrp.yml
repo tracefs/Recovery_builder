@@ -1,4 +1,4 @@
-name: Buildingt6768 recovery
+name: Building mt6768 recovery
 
 on:
 #  release:
@@ -16,7 +16,7 @@ on:
 env:
   MANIFEST: https://github.com/SHRP/manifest.git -b v3_10.0
   DEVICE: lancelot 
-  DT_LINK: https://github.com/Arafattex/twrp_tree_mt6768.git -b lancelot
+  DT_LINK: https://github.com/Arafattex/check.git
   DT_PATH: device/xiaomi/lancelot
   TYPE: recoveryimage
   OT: omni_
