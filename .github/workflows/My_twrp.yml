@@ -1,4 +1,4 @@
-name: Building mt6768 recovery
+name: Building My twrp recovery
 
 on:
 #  release:
