@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0 deprecated
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0-deprecated
   DEVICE: lancelot
   DT_LINK: https://github.com/Arafattex/check.git
   DT_PATH: device/xiaomi/lancelot
