@@ -16,7 +16,7 @@ on:
 env:
   MANIFEST: https://github.com/SHRP/manifest -b v3_11.0
   DEVICE: Z45
-  DT_LINK: https://github.com/Arafattex/twrp_t610/tree/0e2b2deb2712bc9d9a4f39431ba747c7034ec6be
+  DT_LINK: https://github.com/Arafattex/twrp_t610
   DT_PATH: device/symphony/Z45
   TYPE: bootimage
   OT: twrp_
