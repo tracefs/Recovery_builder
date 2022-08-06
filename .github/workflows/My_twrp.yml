@@ -18,7 +18,7 @@ env:
   DEVICE: cheeseburger_dumpling
   DT_LINK: https://github.com/TeamWin/android_device_oneplus_cheeseburger_dumpling
   DT_PATH: device/oneplus/cheeseburger_dumpling
-  TYPE: recoveryimage
+  TYPE: bootimage
   OT: twrp_
   TZ: Europe/London
 
