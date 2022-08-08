@@ -18,7 +18,7 @@ env:
   DEVICE: Z45
   DT_LINK: https://github.com/Arafattex/twrp_t610.git -b Symphony_z45_a11
   DT_PATH: device/symphony/Z45
-  TYPE: bootimage
+  TYPE: recoveryimage
   OT: twrp_
   TZ: Europe/London
 
@@ -57,7 +57,7 @@ jobs:
          run: |
               cd work
               . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TYPE -j50   
-              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/boot.img
+              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img
              
        - name: Save
          uses: actions/upload-artifact@v3
