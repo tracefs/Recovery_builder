@@ -1,4 +1,4 @@
-name: Building My twrp recovery
+name: kernel builder
 
 on:
 #  release:
