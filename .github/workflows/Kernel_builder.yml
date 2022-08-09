@@ -74,7 +74,6 @@ jobs:
               bp=/home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/outL
               ZIPNAME="$Device"
               cd /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/AnyKernel
-              rm *.zip *-dtb 
               cp $bp/arch/arm64/boot/Image.gz-dtb
               zip -r9 "$ZIPNAME".zip *
              
