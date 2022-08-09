@@ -45,8 +45,8 @@ jobs:
              mkdir work
              cd work
              git clone $KS_LINK --depth=1    
-             git clone https://github.com/rama982/clang --depth=1 /clang-llvm
-             
+             git clone https://github.com/rama982/clang clang-llvm --depth=1 
+             git clone https://github.com/rama982/AnyKernel3 AnyKernel --depth=1 
        - name: Build
          run: |
               cd work
