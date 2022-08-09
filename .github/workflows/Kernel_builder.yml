@@ -17,6 +17,7 @@ env:
 
   KS_LINK: https://github.com/Arafattex/shas-dream-oc-mt6768-a11 -b shas-noc
   Device: lancelot
+  Repo: shas-dream-oc-mt6768
 
 jobs:
   build:
@@ -46,17 +47,18 @@ jobs:
              mkdir work
              cd work
              git clone $KS_LINK --depth=1    
+             cd $Repo
              git clone https://github.com/rama982/clang clang-llvm --depth=1 
              git clone https://github.com/rama982/AnyKernel3 AnyKernel --depth=1 
        - name: Build
          run: |
-              cd work
+              cd $Repo
               mkdir outL
               export ARCH=arm64
               export SUBARCH=arm64
               export DTC_EXT=dtc
               make O=outL ARCH=arm64 $Device_defconfig
-              export PATH="/home/runner/work/Recovery_builder/Recovery_builder/work/clang-llvm/bin:${PATH}"
+              export PATH="/home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/clang-llvm/bin:${PATH}"
               make -j$(nproc --all) O=outL \
                                     ARCH=arm64 \
                                     CC=clang \
@@ -65,9 +67,9 @@ jobs:
                                     LD=ld.lld \
                                     NM=llvm-nm \
                                     OBJCOPY=llvm-objcopy
-              bp=/home/runner/work/Recovery_builder/Recovery_builder/work/outL
+              bp=/home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/outL
               ZIPNAME="$Device"
-              cd /home/runner/work/Recovery_builder/Recovery_builder/work/AnyKernel
+              cd /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/AnyKernel
               rm *.zip *-dtb 
               cp $bp/arch/arm64/boot/Image.gz-dtb
               zip -r9 "$ZIPNAME".zip *
@@ -76,5 +78,5 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: $ZIPNAME.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/AnyKernel/$ZIPNAME.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/AnyKernel/$ZIPNAME.zip
             retention-days: 5
