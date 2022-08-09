@@ -54,10 +54,12 @@ jobs:
                                     OBJCOPY=llvm-objcopy
               bp=${PWD}/outL
               zip kernel.zip ${PWD}/outL/arch/arm64/boot/Image.gz-dtb
+              ls
+              PWD
              
        - name: Save
          uses: actions/upload-artifact@v3
          with:
             name: $Device.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/kernel.zip
+            path: ${PWD}/kernel.zip
             retention-days: 5
