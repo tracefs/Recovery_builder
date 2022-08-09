@@ -58,6 +58,6 @@ jobs:
        - name: Save
          uses: actions/upload-artifact@v3
          with:
-            name: "$Device".zip
+            name: $Device.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/kernel.zip
             retention-days: 5
