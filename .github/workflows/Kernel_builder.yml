@@ -17,7 +17,7 @@ env:
 
   KS_LINK: https://github.com/Arafattex/shas-dream-oc-mt6768-a11 -b shas-noc
   Device: lancelot
-  Repo: shas-dream-oc-mt6768
+  Repo: shas-dream-oc-mt6768-a11
 
 jobs:
   build:
@@ -47,7 +47,6 @@ jobs:
              mkdir work
              cd work
              git clone $KS_LINK --depth=1    
-             ls
              cd $Repo
              git clone https://github.com/rama982/clang clang-llvm --depth=1 
              git clone https://github.com/rama982/AnyKernel3 AnyKernel --depth=1 
