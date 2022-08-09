@@ -50,7 +50,27 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TYPE -j50   
+              mkdir outL
+              export ARCH=arm64
+              export SUBARCH=arm64
+              export DTC_EXT=dtc
+              make O=outL ARCH=arm64 lancelot_defconfig
+              export PATH="${PWD}/clang-13/aaa/:${PATH}"
+              make -j$(nproc --all) O=outL \
+                                    ARCH=arm64 \
+                                    CC=clang \
+                                    CROSS_COMPILE=aarch64-linux-gnu- \
+                                    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+                                    LD=ld.lld \
+                                    NM=llvm-nm \
+                                    OBJCOPY=llvm-objcopy
+              bp=/home/runner/work/Recovery_builder/Recovery_builder/work/outL
+              DATE=$(date "+%Y%m%d-%H%M")
+              ZIPNAME="Shas-Dream-Lancelot-R-vendor"
+              cd ${PWD}/AnyKernel3-master
+              rm *.zip *-dtb 
+              cp $bp/arch/arm64/boot/Image.gz-dtb .
+              zip -r9 "$ZIPNAME"-"${DATE}".zip *
               zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/boot.img
              
        - name: Save
