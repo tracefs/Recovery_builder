@@ -55,7 +55,6 @@ jobs:
               bp=${PWD}/outL
               zip kernel.zip ${PWD}/outL/arch/arm64/boot/Image.gz-dtb
               ls
-              PWD
              
        - name: Save
          uses: actions/upload-artifact@v3
