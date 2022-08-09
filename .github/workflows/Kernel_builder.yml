@@ -53,14 +53,12 @@ jobs:
                                     NM=llvm-nm \
                                     OBJCOPY=llvm-objcopy
               bp=${PWD}/outL
-              ZIPNAME="$Device"
-              cd ${PWD}/AnyKernel3-master
-              cp $bp/arch/arm64/boot/Image.gz-dtb
-              zip -r9 "$ZIPNAME".zip *
+              cd $bp/arch/arm64/boot
+              ls
              
        - name: Save
          uses: actions/upload-artifact@v3
          with:
             name: $ZIPNAME.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/AnyKernel/$ZIPNAME.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/outL/arch/arm64/boot/Image.gz-dtb
             retention-days: 5
