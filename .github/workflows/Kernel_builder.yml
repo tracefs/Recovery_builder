@@ -54,11 +54,12 @@ jobs:
                                     OBJCOPY=llvm-objcopy
               bp=${PWD}/outL
               zip kernel.zip ${PWD}/outL/arch/arm64/boot/Image.gz-dtb
+              cd /home/runner/work/Recovery_builder/Recovery_builder/work/shas-dream-oc-mt6768-a11
               ls
-             
+              
        - name: Save
          uses: actions/upload-artifact@v3
          with:
             name: $Device.zip
-            path: ${PWD}/kernel.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/shas-dream-oc-mt6768-a11/kernel.zip
             retention-days: 5
