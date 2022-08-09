@@ -1,4 +1,4 @@
-name: kernel builder
+name: kernel_builder
 
 on:
 #  release:
