@@ -61,7 +61,7 @@ jobs:
               export ARCH=arm64
               export SUBARCH=arm64
               export DTC_EXT=dtc
-              make O=outL ARCH=arm64 $Device_defconfig
+              make O=outL ARCH=arm64 lancelot_defconfig
               export PATH="/home/runner/work/Recovery_builder/Recovery_builder/work/$Repo/clang-llvm/bin:${PATH}"
               make -j50 O=outL \
                                     ARCH=arm64 \
