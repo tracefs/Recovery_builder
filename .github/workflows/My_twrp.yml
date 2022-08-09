@@ -52,9 +52,7 @@ jobs:
              repo init -u $MANIFEST --depth=1
              repo sync -c -j100 --force-sync --no-clone-bundle --no-tags
              git clone $DT_LINK $DT_PATH --depth=1    
-             cd .. 
-             find work -type d -name ".git" -exec rm -rf {} \;   
-             
+
        - name: Build
          run: |
               cd work
