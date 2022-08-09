@@ -52,7 +52,6 @@ jobs:
              git clone https://github.com/rama982/AnyKernel3 AnyKernel --depth=1 
        - name: Build
          run: |
-              cd $Repo
               mkdir outL
               export ARCH=arm64
               export SUBARCH=arm64
