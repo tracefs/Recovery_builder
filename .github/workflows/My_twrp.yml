@@ -15,9 +15,9 @@ on:
 
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-11
-  DEVICE: Z45
-  DT_LINK: https://github.com/Arafattex/twrp_t610
-  DT_PATH: device/symphony/Z45
+  DEVICE: cheeseburger_dumpling
+  DT_LINK: https://github.com/TeamWin/android_device_oneplus_cheeseburger_dumpling
+  DT_PATH: device/oneplus/cheeseburger_dumpling
   TYPE: recoveryimage
   OT: twrp_
   TZ: Europe/London
