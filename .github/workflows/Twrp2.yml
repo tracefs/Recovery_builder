@@ -1,0 +1,109 @@
+name: TWRP2Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      crypto:
+        description: "Whether to disable the encryption module, true or false"
+        required: false
+        default: "false"
+      Enable_cache:
+        description: "Enable cache, true or false"
+        required: true
+        default: "true"
+      Delete_oldReleases:
+        description: "whether to delete old postings, true or false"
+        required: false
+        default: "false"
+env:
+  Rec_name: TWRP11
+  Rec_ver: 3.6.0
+  Rec_url: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-11
+  device: spes
+  DT_url: https://github.com/shashankx86/android_device_xiaomi_spes -b twrp-11
+  DT_path: device/xiaomi/spes
+  ProductFileHeader: twrp
+  target: bootimage
+  WorkSpace: WorkSpace
+  TZ: Asia/Calcutta
+  Author: ${{github.actor}}
+  Delete_old: false
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: "Cleanup Environment"
+        uses: rokibhasansagar/slimhub_actions@main
+      - name: Initializing environment
+        run: |
+          echo "::group::Install Build Env Tool"
+          sudo -E apt-get clean
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install curl libstdc++6 git wget repo rsync aria2
+          echo "::endgroup::"
+          git config --global user.name "${{github.actor}}"
+          git config --global user.email "shashankspis20@gamil.com"
+          git clone https://gitlab.com/OrangeFox/misc/scripts.git --depth=1 --single-branch
+          cd scripts
+          echo "::group::Setup Build Env"
+          sudo -E bash setup/android_build_env.sh
+          echo "::endgroup::"
+          echo "::group::Install Android Sdk"
+          sudo -E bash setup/install_android_sdk.sh
+          echo "::endgroup::"
+
+      - name: Sync recovery source
+        run: |
+          mkdir ${{env.WorkSpace}}
+          cd ${{env.WorkSpace}}
+          echo "::group::Repo Init"
+          repo init -u ${{env.Rec_url}} --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
+          echo "::endgroup::"
+          echo "::group::Repo Sync"
+          repo sync -j4
+          echo "::endgroup::"
+
+      - name: Sync device tree
+        run: |
+          cd ${{env.WorkSpace}}
+          git clone ${{env.DT_url}} --depth=1 --single-branch ${{env.DT_path}}
+
+      - name: Restore cache
+        uses: actions/cache@v2
+        if: (github.event.inputs.Enable_cache == 'true' && github.event.inputs.Enable_cache  != 'false') || contains(github.event.action, 'Enable_cache')
+        with:
+          path: |
+            ~/.ccache
+            ${{env.WorkSpace}}/out
+          key: ${{runner.os}}-${{env.Rec_name}}-${{env.Rec_ver}}-${{env.device}}
+          restore-keys: |
+            ${{runner.os}}-${{env.Rec_name}}-${{env.Rec_ver}}-${{env.device}}
+      - name: Setup ccache
+        uses: alexjurkiewicz/setup-ccache@master
+        if: (github.event.inputs.Enable_cache == 'true' && github.event.inputs.Enable_cache  != 'false') || contains(github.event.action, 'Enable_cache')
+        with:
+          max-size: 5G
+          extra-config: |
+            keep_comments_cpp = true
+
+      - name: Build ${{env.Rec_name}}
+        run: |
+          cd ${{env.WorkSpace}}
+          echo "::group::Run Envsetup.sh"
+          source build/envsetup.sh
+          echo "::endgroup::"
+          echo "::group::Set EnvPath"
+          export ALLOW_MISSING_DEPENDENCIES=true
+          echo "::endgroup::"
+          ls
+          echo "::group::Lunch ${{env.ProductFileHeader}}_${{env.device}}-eng"
+          lunch ${{env.ProductFileHeader}}_${{env.device}}-eng
+          echo "::endgroup::"
+          echo "::group::Sync"
+          repo sync -j4
+          echo "::endgroup::"
+          echo "::group::Build ${{env.Rec_name}}"
+          mka ${{env.target}}
+          echo "::endgroup::"
+        shell: bash
