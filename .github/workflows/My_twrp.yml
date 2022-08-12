@@ -15,11 +15,11 @@ on:
 
 env:
   MANIFEST: https://github.com/SHRP/manifest -b v3_11.0
-  DEVICE: Z33
-  DT_LINK: https://github.com/Arafattex/twrp_t610 -b Symphony_z33_a11
-  DT_PATH: device/symphony/Z33
+  DEVICE: lancelot 
+  DT_LINK: https://github.com/Arafattex/lancelot-a11
+  DT_PATH: device/xiaomi/lancelot
   TYPE: recoveryimage
-  OT: twrp_
+  OT: omni_
   TZ: Europe/London
 
 jobs:
@@ -72,6 +72,6 @@ jobs:
        - name: Save
          uses: actions/upload-artifact@v3
          with:
-            name: recoveryz33.zip
+            name: recoverylance.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
             retention-days: 5
