@@ -74,5 +74,5 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: recoverylanceold.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/shrp.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
             retention-days: 5
