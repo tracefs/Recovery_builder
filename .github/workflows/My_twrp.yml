@@ -16,7 +16,7 @@ on:
 env:
   MANIFEST: https://github.com/Arafattex/platform_manifest_twrp_aosp.git -b twrp-11
   DEVICE: lancelot
-  DT_LINK: https://github.com/Arafattex/twrp_tree_mt6768 -b lancelot_a111
+  DT_LINK: https://github.com/Arafattex/twrp_tree_mt6768 -b lancelot_a11
   DT_PATH: device/xiaomi/lancelot
   TYPE: recoveryimage
   OT: omni_
