@@ -15,9 +15,9 @@ on:
 
 env:
   MANIFEST: https://github.com/Arafattex/platform_manifest_twrp_aosp -b twrp-11
-  DEVICE: lancelot 
-  DT_LINK: https://github.com/Arafattex/twrp_tree_mt6768 -b lancelot_a11n
-  DT_PATH: device/xiaomi/lancelot 
+  DEVICE: shiva
+  DT_LINK: https://github.com/Arafattex/twrp_tree_mt6768 -b shiva_a11
+  DT_PATH: device/xiaomi/shiva
   TYPE: recoveryimage
   OT: omni_
   TZ: Europe/London
@@ -70,6 +70,6 @@ jobs:
        - name: Save
          uses: actions/upload-artifact@v3
          with:
-            name: recoverdtb.zip
+            name: recovershiv11.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
             retention-days: 5
