@@ -17,7 +17,7 @@ env:
 
   KS_LINK: https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git -b merlin-r-oss
   Device: lancelot
-  Repo: https://github.com/MiCode/Xiaomi_Kernel_OpenSource
+  Repo: Xiaomi_Kernel_OpenSource
 
 jobs:
   build:
