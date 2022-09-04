@@ -15,9 +15,9 @@ on:
 
 env:
 
-  KS_LINK: https://github.com/Arafattex/shas-dream-oc-mt6768-a11 -b shas-noc
+  KS_LINK: https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git -b merlin-r-oss
   Device: lancelot
-  Repo: shas-dream-oc-mt6768-a11
+  Repo: https://github.com/MiCode/Xiaomi_Kernel_OpenSource
 
 jobs:
   build:
