@@ -33,7 +33,7 @@ jobs:
          run: |
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
-            sudo rm -rf /opt /usr/share
+           
             
        - name: Sync recovery source and device tree
          run: |
@@ -41,8 +41,7 @@ jobs:
              cd work
              repo init -u https://github.com/PixelExperience/manifest -b thirteen
              curl -o .repo/local_manifests/local_manifests.xml https://raw.githubusercontent.com/Arafattex/local_manifest/Lancelot_pixel/local_manifest.xml --create-dirs
-             repo sync -c -j100 --force-sync --no-clone-bundle --no-tags
-             git clone $DT_LINK $DT_PATH --depth=1            
+             repo sync        
              
        - name: Build
          run: |
