@@ -21,7 +21,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
        - name: Checkout
@@ -29,29 +29,30 @@ jobs:
 
        - name: Sync recovery source and device tree
          run: |
+             cd ~
              mkdir work
              cd work
              git clone $KS_LINK --depth=1 kernel
-             cd $Repo
+             cd kernel 
              git clone https://github.com/kdrag0n/proton-clang.git clang-llvm --depth=1 
          
        - name: Build
          run: |
-              cd /home/runner/work/Recovery_builder/Recovery_builder/work/kernel
+              cd ~/work/kernel
               mkdir outL
               export ARCH=arm64
               export SUBARCH=arm64
               export DTC_EXT=dtc
               make O=outL ARCH=arm64 lancelot_defconfig
-              export PATH="/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin:${PATH}"
+              export PATH="~/work/kernel/clang-llvm/bin:${PATH}"
               make -j50 O=outL \
                                     ARCH=arm64 \
                                     CC=clang \
-                                    CROSS_COMPILE=/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin/aarch64-linux-gnu- \
-                                    CROSS_COMPILE_ARM32=/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin/arm-linux-gnueabi- \
-                                    LD=/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin/ld.lld \
-                                    NM=/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin/llvm-nm \
-                                    OBJCOPY=/home/runner/work/Recovery_builder/Recovery_builder/work/kernel/clang-llvm/bin/llvm-objcopy
+                                    CROSS_COMPILE=~/work/kernel/clang-llvm/bin/aarch64-linux-gnu- \
+                                    CROSS_COMPILE_ARM32=~/work/kernel/clang-llvm/bin/arm-linux-gnueabi- \
+                                    LD=~/work/kernel/clang-llvm/bin/ld.lld \
+                                    NM=~/work/kernel/clang-llvm/bin/llvm-nm \
+                                    OBJCOPY=~/work/kernel/clang-llvm/bin/llvm-objcopy
               bp=${PWD}/outL
               zip kernel.zip ${PWD}/outL/arch/arm64/boot/Image.gz-dtb
               cd /home/runner/work/Recovery_builder/Recovery_builder/work/Kernel
