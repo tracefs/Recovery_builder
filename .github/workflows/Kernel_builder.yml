@@ -15,9 +15,9 @@ on:
 
 env:
 
-  KS_LINK: https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git -b merlin-r-oss
+  KS_LINK: https://github.com/Arafattex/lava_kernel -b 12.1
   Device: lancelot
-  Repo: Xiaomi_Kernel_OpenSource
+  Repo: 12.1
 
 jobs:
   build:
