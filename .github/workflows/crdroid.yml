@@ -1,5 +1,5 @@
 name: Building crdroid
-
+on:
 jobs:
   build:
     runs-on: ubuntu-18.04
