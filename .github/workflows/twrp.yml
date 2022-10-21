@@ -22,7 +22,7 @@ jobs:
             
        - name: Adding and Sync source
          run: |   
-              repo init -u https://github.com/PixelExtended/manifest -b trece --depth=1
+              repo init -u https://github.com/PixelExperience/manifest -b thirteen
               curl -o .repo/local_manifests/local_manifests.xml https://raw.githubusercontent.com/Arafattex/local_manifest/Lancelot_pixell/local_manifest.xml --create-dirs
               repo sync
        - name: Build twrp
