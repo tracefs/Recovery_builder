@@ -13,14 +13,19 @@ jobs:
                                
        - name: remove pkg and setting repo
          run: |
-            
-            sudo -E apt-get -qq install repo
+            sudo apt update && sudo apt install git
+            git clone https://github.com/SA-17/rm_pkg pkg && cd pkg && bash setup.sh
+            cd .. && sudo -E apt-get -qq update
+            sudo -E apt-get -qq install bc build-essential tar zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex curl  bison aria2
+            sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
+            sudo chmod a+rx /usr/local/bin/repo
             
        - name: Adding and Sync source
          run: |   
              mkdir work
              cd work
-             repo init -u https://github.com/LineageOS/android.git -b lineage-19.1
+             repo init -u https://github.com/PixelExperience/manifest -b thirteen
+             curl -o .repo/local_manifests/local_manifests.xml https://raw.githubusercontent.com/Arafattex/local_manifest/Lancelot_pixel/local_manifest.xml --create-dirs
              repo sync -c -j700 --force-sync --no-clone-bundle --no-tags
              
        - name: Build twrp
