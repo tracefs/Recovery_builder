@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  # (required) twrp manifest 
-  MAN
+ 
 
 jobs:
   build:
