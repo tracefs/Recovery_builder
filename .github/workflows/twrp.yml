@@ -24,7 +24,8 @@ jobs:
          run: |   
              mkdir work
              cd work
-             repo init --depth=1 -u https://github.com/Corvus-AOSP/android_manifest.git -b 13
+             repo init -u https://github.com/CipherOS/android_manifest.git -b thirteen
+             curl -o .repo/local_manifests/local_manifests.xml https://raw.githubusercontent.com/Arafattex/local_manifest/Lancelot_pixel/local_manifest.xml --create-dirs
              repo sync
        - name: Build twrp
          run: |
