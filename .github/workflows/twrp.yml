@@ -3,9 +3,6 @@ name: Building Twrp
 on:
   workflow_dispatch:
 
-env:
- 
-
 jobs:
   build:
     runs-on: ubuntu-18.04
