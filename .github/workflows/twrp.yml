@@ -24,7 +24,7 @@ jobs:
          run: |   
              mkdir work
              cd work
-             repo init -u https://github.com/LineageOS/android.git -b lineage-20.0
+             repo init --depth=1 -u https://github.com/Corvus-AOSP/android_manifest.git -b 13
              repo sync
        - name: Build twrp
          run: |
