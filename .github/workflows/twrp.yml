@@ -22,7 +22,7 @@ jobs:
             
        - name: Adding and Sync source
          run: |   
-              repo init -u https://github.com/Arafattex/pixel -b 13
+              repo init -u https://github.com/Arafattex/manifest -b 13
               repo sync
        - name: Build twrp
          run: |
