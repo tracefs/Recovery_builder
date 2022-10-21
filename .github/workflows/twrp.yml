@@ -5,27 +5,7 @@ on:
 
 env:
   # (required) twrp manifest 
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git
-  # (required) manifest branch 
-  BRANCH: twrp-11
-  # (required) device codename i.e: sweet mojito.. 
-  DEVICE: m10lte
-  # (required) device tree link with branch if exists
-  DT_LINK: https://github.com/SA-17/m10
-  # (required) who made your phone ? 
-  MANUFACTURER: samsung
-  # (required) recovery partiton = recovery, else (no recovery partition): boot 
-  TARGET: recovery
-  # dont change that
-  IMAGE: image
-  # (required) depend of device tree if you see twrp_"codename".mk use twrp
-  # else (omni_"codename".mk): omni
-  OT: twrp
-  # dont change that
-  SYM: _
-  # (required) output format for some reason samsung phones need a custom mkbootimg
-  # which compress your recovery into .tar (default: .img / samsung + custom mkbootimg: .tar) 
-  FORMAT: .tar
+  MAN
 
 jobs:
   build:
@@ -44,9 +24,8 @@ jobs:
          run: |   
              mkdir work
              cd work
-             repo init -u $MANIFEST -b $BRANCH --depth=1              
+             repo init -u https://github.com/LineageOS/android.git -b lineage-19.1
              repo sync -c -j700 --force-sync --no-clone-bundle --no-tags
-             git clone $DT_LINK --depth=1 --single-branch device/$MANUFACTURER/$DEVICE          
              
        - name: Build twrp
          run: |
