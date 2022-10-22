@@ -1,0 +1,35 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+                               
+       - name: remove pkg and setting repo
+         run: |
+            sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
+            sudo chmod a+rx /usr/local/bin/repo
+            
+       - name: Adding and Sync source
+         run: |   
+              git clone git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 -b master clange
+              cd clange
+              ls
+       - name: Build twrp
+         run: |
+              cd work
+              . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
+              zip twrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/$TARGET$FORMAT
+
+       - name: Save in artifact
+         uses: actions/upload-artifact@v3
+         with:
+            name: recovery.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/twrp.zip
+            retention-days: 5
