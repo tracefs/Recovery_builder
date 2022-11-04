@@ -15,6 +15,9 @@ jobs:
          run: |
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
+            pip3 install dumpyara
+            pip3 install .
+           pip3 install aospdtgen
             
        - name: Adding and Sync source
          run: |
