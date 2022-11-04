@@ -59,27 +59,9 @@ jobs:
     - name: Check Out
       uses: actions/checkout@v3
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
-    - name: Cleanup
-      uses: rokibhasansagar/slimhub_actions@main
-      # That's it! Now use your normal steps
 
-    - name: Prepare the environment
-      run: |
-        sudo apt update
-        sudo apt -y upgrade
-        sudo apt -y install Jinja2 GitPython sebaubuntu-libs
-    - name: Install OpenJDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'zulu'
-        java-version: '8'
 
-    - name: Setup SSH Keys
-      if: ${{ startsWith(github.event.inputs.MANIFEST_URL, 'git@github.com') }}
-      uses: webfactory/ssh-agent@v0.5.4
-      with:
-          ssh-private-key: |
-              ${{ secrets.SSH_PRIVATE_KEY }}
+
 
     - name: Set variables
       run: |
@@ -88,8 +70,12 @@ jobs:
       
     - name: Install repo
       run: |
-        pip3 install dumpyara
-        pip3 install aospdtgen
+        pip install Jinja2
+        pip install GitPython
+        pip install sebaubuntu_libs
+        pip install smmap
+        pip install dumpyara
+        pip install aospdtgen
         wget https://hugeota.d.miui.com/V13.0.5.0.SJCCNXM/miui_LANCELOT_V13.0.5.0.SJCCNXM_9a2b91926f_12.0.zip
         python3 -m dumpyara miui_LANCELOT_V13.0.5.0.SJCCNXM_9a2b91926f_12.0.zip
 
