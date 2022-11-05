@@ -74,11 +74,8 @@ jobs:
         pip install GitPython
         pip install sebaubuntu_libs
         pip install smmap
-        pip install dumpyara
-        pip install aospdtgen
-        wget https://hugeota.d.miui.com/V13.0.5.0.SJCCNXM/miui_LANCELOT_V13.0.5.0.SJCCNXM_9a2b91926f_12.0.zip
-        python3 -m dumpyara miui_LANCELOT_V13.0.5.0.SJCCNXM_9a2b91926f_12.0.zip
-
+        git clone https://github.com/sebaubuntu-python/aospdtgen.git -b master dump
+        python3 ~/dump/aospdtgen/main.py
       
     - name: Initialize repo
       run: |
