@@ -80,7 +80,7 @@ jobs:
         cd  ..
         git clone https://dumps.tadiphone.dev/dumps/redmi/galahad.git -b lancelot-user-12-SP1A.210812.016-V13.0.5.0.SJCCNXM-release-keys lava
         python3 -m aospdtgen lava 
-        zip dt.zip /home/runner/work/Recovery_builder/Recovery_builder/output
+        zip -r dt.zip /home/runner/work/Recovery_builder/Recovery_builder/output
           
   
       
