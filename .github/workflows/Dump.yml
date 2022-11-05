@@ -77,7 +77,9 @@ jobs:
         git clone https://github.com/Arafattex/aospdtgen.git -b master dump
         cd dump
         sudo python3 setup.py install
-      
+        cd  ..
+        git clone https://dumps.tadiphone.dev/dumps/redmi/galahad.git -b lancelot-user-12-SP1A.210812.016-V13.0.5.0.SJCCNXM-release-keys lava
+        python3 -m aospdtgen lava 
     - name: Initialize repo
       run: |
         mkdir workspace
