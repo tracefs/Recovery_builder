@@ -80,46 +80,22 @@ jobs:
         cd  ..
         git clone https://dumps.tadiphone.dev/dumps/redmi/galahad.git -b lancelot-user-12-SP1A.210812.016-V13.0.5.0.SJCCNXM-release-keys lava
         python3 -m aospdtgen lava 
-    - name: Initialize repo
-      run: |
-        mkdir workspace
-        cd workspace
-        echo "::set-output name=pwd::$(pwd)"
-        git config --global user.name "Captain Throwback"
-        git config --global user.email "captainthrowback@hotmail.com"
-        repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
-      id: pwd
+        zip dt.zip /home/runner/work/Recovery_builder/Recovery_builder/output
           
-    - name: Repo Sync
-      run: |
-        repo sync -j$(nproc --all) --force-sync
-      working-directory: workspace
+  
       
-    - name: Clone device tree
-      run: |
-        git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
-      working-directory: ${{ steps.pwd.outputs.pwd }}
 
-   
     
 
-    - name: Set Swap Space
-      uses: pierotofy/set-swap-space@master
-      with:
-        swap-size-gb: 12
 
 
-    - name: Building recovery
-      run: |
-        source build/envsetup.sh
-        export ALLOW_MISSING_DEPENDENCIES=true
-        lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
-      working-directory: ${{ steps.pwd.outputs.pwd }}
+
+
 
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
-        files: workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.BUILD_TARGET }}.img
+        files: /home/runner/work/Recovery_builder/Recovery_builder/dt.zip
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: |
