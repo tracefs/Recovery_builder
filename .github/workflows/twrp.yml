@@ -18,11 +18,9 @@ jobs:
             
        - name: Adding and Sync source
          run: |
-              repo init --depth=1 --no-repo-verify -u https://github.com/PixelExtended/manifest -b trece -g default,-mips,-darwin,-notdefault
-              git -C /home/runner/work/Recovery_builder/Recovery_builder/.repo/manifests fetch --unshallow
-              git -C /home/runner/work/Recovery_builder/Recovery_builder/.repo/manifests reset --hard 47f6174cc7b6df885466e2bf4bf6e16210c7aba5
-              git clone https://github.com/Arafattex/local_manifest.git --depth 1 -b Lancelot_pex .repo/local_manifests
-            #  repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+              repo init --depth=1 --no-repo-verify -u https://github.com/ForkLineageOS/android.git -b lineage-19.1 -g default,-mips,-darwin,-notdefault
+              git clone https://github.com/Arafattex/local_manifest.git --depth 1 -b Lancelot_lospro .repo/local_manifests
+              repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
        - name: Build twrp
          run: |
