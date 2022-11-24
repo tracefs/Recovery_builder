@@ -18,7 +18,7 @@ jobs:
             
        - name: Adding and Sync source
          run: |
-              repo init --depth=1 --no-repo-verify -u https://github.com/Arafattex/android.git -b Real -g default,-mips,-darwin,-notdefault
+              repo init --depth=1 --no-repo-verify -u https://github.com/Arafattex/android.git -b Real1 -g default,-mips,-darwin,-notdefault
               
        - name: Build twrp
          run: |
