@@ -17,5 +17,5 @@ jobs:
               mkdir kernel
               cd kernel
               wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-13.0.0_r20/clang-r450784d.tar.gz
-              tar -C -zxvf clang-r450784d.tar.gz
+              tar -zxvf clang-r450784d.tar.gz
               ls
