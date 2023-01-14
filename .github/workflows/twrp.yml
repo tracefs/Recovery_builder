@@ -19,7 +19,7 @@ jobs:
        - name: Adding and Sync source
          run: |
               cd ~
-              echo "$PATH"
+              pwd
        - name: Build twrp
          run: |
               cd work
