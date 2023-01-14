@@ -15,7 +15,7 @@ jobs:
          run: |
             cd ~
             git clone --depth=1 https://github.com/rama982/clang.git -b master toolchains/proton-clang
-            git clone --depth=1 https://github.com/Arafattex/oc_a13r.git --b a13r kernel
+            git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b a13r kernel
 
        - name: Build Kernel 
          run: |
