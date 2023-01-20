@@ -27,12 +27,12 @@ jobs:
             cd ~
             cd kernel
             chmod 0777 lancelot.sh
-            ./merlin.sh
+            ./shiva.sh
             
 
        - name: Kernel
          uses: actions/upload-artifact@v3
          with:
-            name: kernelm.zip
+            name: kernels.zip
             path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
             retention-days: 5
