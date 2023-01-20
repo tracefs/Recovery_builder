@@ -10,9 +10,9 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
-
+                               
        - name: sync clang And Kernel
-          run:  |
+         run: |
             cd ~
             git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b a13r kernel
             cd kernel
@@ -20,12 +20,7 @@ jobs:
             mkdir clang-13
             cd clang-13
             git clone https://github.com/rama982/clang --depth=1 aaa
-            cd ..
-            ls
-            cd clang-13
-            ls
-            cd aaa
-            ls
+            
        - name: Build Kernel 
          run: |
             cd ~
