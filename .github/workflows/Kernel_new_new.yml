@@ -10,6 +10,7 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
+
        - name: sync clang And Kernel
           run:  |
             cd ~
