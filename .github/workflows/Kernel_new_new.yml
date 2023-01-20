@@ -10,7 +10,7 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
-       - name: update 
+       - name: update   
           run:  |
             sudo apt update && sudo apt install git
             git clone https://github.com/SA-17/rm_pkg pkg && cd pkg && bash setup.sh
