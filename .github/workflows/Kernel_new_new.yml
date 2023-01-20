@@ -11,6 +11,7 @@ jobs:
        - name: Checkout
          uses: actions/checkout@master
        - name: update 
+          run:  |
             sudo apt update && sudo apt install git
             git clone https://github.com/SA-17/rm_pkg pkg && cd pkg && bash setup.sh
             cd .. && sudo -E apt-get -qq update
@@ -18,7 +19,7 @@ jobs:
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
        - name: sync clang And Kernel
-         run: |
+          run:  |
             cd ~
             git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b a13r kernel
             cd kernel
