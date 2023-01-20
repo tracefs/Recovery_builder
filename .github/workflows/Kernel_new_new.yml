@@ -35,12 +35,5 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: kernel.zip
-            path: /home/runner/kernel/out/arch/arm64/boot/Image.gz-dtb
-            retention-days: 5
-
-       - name: Dtbo
-         uses: actions/upload-artifact@v3
-         with:
-            name: dtbo.zip
-            path: /home/runner/kernel/out/arch/arm64/boot/dtbo.img
+            path: /home/runner/kernel/Shas-Dream-*.zip
             retention-days: 5
