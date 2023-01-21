@@ -28,7 +28,7 @@ jobs:
             cd ~
             cd kernel
             chmod 0777 lancelot.sh
-            ./lancot.sh
+            ./lancelot.sh
             
 
        - name: Kernel
