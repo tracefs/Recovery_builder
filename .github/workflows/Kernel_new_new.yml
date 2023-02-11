@@ -16,7 +16,7 @@ jobs:
        - name: sync clang And Kernel
          run: |
             cd ~
-            git clone --depth=1 https://github.com/Arafattex/base.git -b twrp kernel
+            git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b twrp kernel
             cd kernel
             # git clone https://github.com/rama982/AnyKernel3 --depth=1 AnyKernel3-master
             mkdir clang-13
