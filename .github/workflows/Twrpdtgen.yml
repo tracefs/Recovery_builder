@@ -1,0 +1,34 @@
+name: Twrpdtgen
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+
+      
+                               
+       - name: sync clang And Kernel
+         run: |
+            cd ~
+            pip3 install twrpdtgen
+
+       - name: Build Kernel 
+         run: |
+            cd ~
+            cd kernel
+            chmod 0777 lancelot.sh
+            ./lancelot.sh
+            
+
+       - name: Kernel
+         uses: actions/upload-artifact@v3
+         with:
+            name: kernell.zip
+            path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
+            retention-days: 5
