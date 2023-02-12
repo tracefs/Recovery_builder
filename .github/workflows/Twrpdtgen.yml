@@ -17,6 +17,8 @@ jobs:
          run: |
             cd ~
             pip3 install twrpdtgen
+            wget https://s3.ap-south-1.amazonaws.com/blob-ap-south-1-ukyez4/sara/4a/4ae4/4ae47223-78ce-43b1-943e-52d192cd7b09.bin?response-content-disposition=attachment%3B%20filename%3D%22los_recovery.img%22&response-content-type=&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4DM2EY46SOWUMUP4%2F20230212%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20230212T105355Z&X-Amz-SignedHeaders=host&X-Amz-Expires=1800&X-Amz-Signature=efa0ae7c10f8dc66256b5fa74d18f997ba38b982498b079106b083e242c8c1c9
+            ls
 
        - name: Build Kernel 
          run: |
