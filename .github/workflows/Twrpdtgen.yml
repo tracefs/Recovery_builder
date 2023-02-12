@@ -18,7 +18,7 @@ jobs:
             cd ~
             pip3 install twrpdtgen
             wget https://github.com/Arafattex/temp/blob/main/los_recovery.img?raw=true
-            python3 -m twrpdtgen los_recovery.img
+            python3 -m twrpdtgen /home/runner/los_recovery.img
             ls
 
        - name: Build Kernel 
