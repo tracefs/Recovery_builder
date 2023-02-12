@@ -19,19 +19,15 @@ jobs:
             pip3 install twrpdtgen
             wget https://github.com/Arafattex/temp/blob/main/los_recovery.img?raw=true
             python3 -m twrpdtgen /home/runner/los_recovery.img?raw=true
+            zip -r output.zip output
             ls
 
-       - name: Build Kernel 
-         run: |
-            cd ~
-            cd kernel
-            chmod 0777 lancelot.sh
-            ./lancelot.sh
+
             
 
        - name: Kernel
          uses: actions/upload-artifact@v3
          with:
-            name: kernell.zip
-            path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
+            name: twrp.zip
+            path: /home/runner/output.zip
             retention-days: 5
