@@ -17,8 +17,8 @@ jobs:
          run: |
             cd ~
             pip3 install twrpdtgen
-            wget https://github.com/Arafattex/temp/blob/main/los_recovery.img?raw=true
-            python3 -m twrpdtgen /home/runner/los_recovery.img?raw=true
+            wget https://github.com/Arafattex/temp/blob/main/los_recovery_merlin.img?raw=true
+            python3 -m twrpdtgen /home/runner/los_recovery_merlin.img?raw=true
             zip -r output.zip output
             ls
 
