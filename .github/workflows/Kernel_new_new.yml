@@ -35,6 +35,6 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: kernell.zip
-            path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
-            # path: /home/runner/kernel/outL/arch/arm64/boot/Image.gz
+            # path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
+            path: /home/runner/kernel/outL/arch/arm64/boot/Image.gz
             retention-days: 5
