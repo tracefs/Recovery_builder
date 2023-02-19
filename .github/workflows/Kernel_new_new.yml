@@ -27,14 +27,14 @@ jobs:
          run: |
             cd ~
             cd kernel
-            chmod 0777 lancelot.sh
-            ./lancelot.sh
+            chmod 0777 merlin.sh
+            ./merlin.sh
             
 
        - name: Kernel
          uses: actions/upload-artifact@v3
          with:
-            name: kernel_lan.zip
+            name: kernel_mer.zip
             # path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
-            path: /home/runner/kernel/outL/arch/arm64/boot/Image.gz
+            path: /home/runner/kernel/outM/arch/arm64/boot/Image.gz
             retention-days: 5
