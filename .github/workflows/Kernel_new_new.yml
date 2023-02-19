@@ -16,9 +16,9 @@ jobs:
        - name: sync clang And Kernel
          run: |
             cd ~
-            git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b a13rt kernel
+            git clone --depth=1 https://github.com/Arafattex/oc_a13r.git -b lineage-20 kernel
             cd kernel
-            # git clone https://github.com/rama982/AnyKernel3 --depth=1 AnyKernel3-master
+            git clone https://github.com/rama982/AnyKernel3 --depth=1 AnyKernel3-master
             mkdir clang-13
             cd clang-13
             git clone https://github.com/vijaymalav564/vortex-clang.git -b master --depth=1 aaa
@@ -34,7 +34,7 @@ jobs:
        - name: Kernel
          uses: actions/upload-artifact@v3
          with:
-            name: kernell.zip
+            name: kernel_lan.zip
             # path: /home/runner/kernel/AnyKernel3-master/Shas-Dream-*.zip
             path: /home/runner/kernel/outL/arch/arm64/boot/Image.gz
             retention-days: 5
