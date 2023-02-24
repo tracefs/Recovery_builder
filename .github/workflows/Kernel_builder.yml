@@ -15,7 +15,7 @@ on:
 
 env:
 
-  KS_LINK: https://github.com/Arafattex/lava_kernel -b 12.1
+  KS_LINK: https://github.com/tracefs/android_kernel_xiaomi_mt6768/ -b kernelsu
   Device: lancelot
   
 
