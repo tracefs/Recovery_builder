@@ -30,7 +30,7 @@ jobs:
        - name: Sync recovery source and device tree
          run: |
              cd ~
-             mkdir work
+             mkdir plox
              cd work
              git clone $KS_LINK --depth=1 kernel
              cd kernel 
