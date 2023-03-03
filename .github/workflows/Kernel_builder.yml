@@ -11,7 +11,7 @@ on:
 #  schedule:
 #    - cron: 0 8 * * 5
 #  tested on android 8.1
-  ploxflow_dispatch:
+  workflow_dispatch:
 
 env:
 
