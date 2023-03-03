@@ -55,7 +55,7 @@ jobs:
                                     OBJCOPY=~/plox/kernel/clang-llvm/bin/llvm-objcopy
               bp=${PWD}/outL
               zip kernel.zip ${PWD}/outL/arch/arm64/boot/Image.gz-dtb
-              cd /home/runner/plox/Recovery_builder/Recovery_builder/plox/Kernel
+              cd /home/runner/plox/Recovery_builder/Recovery_builder/plox/kernel
               ls
               
        - name: Save
