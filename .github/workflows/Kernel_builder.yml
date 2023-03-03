@@ -15,7 +15,7 @@ on:
 
 env:
 
-  KS_LINK: https://github.com/tracefs/android_kernel_xiaomi_mt6768/ -b kernelsu
+  KS_LINK: https://github.com/tracefs/android_kernel_xiaomi_mt6768/ -b nethunter
   Device: lancelot
   
 
@@ -43,7 +43,7 @@ jobs:
               export ARCH=arm64
               export SUBARCH=arm64
               export DTC_EXT=dtc
-              make O=outL ARCH=arm64 lancelot_defconfig
+              make O=outL ARCH=arm64 nethunter_defconfig
               export PATH="~/work/kernel/clang-llvm/bin:${PATH}"
               make -j50 O=outL \
                                     ARCH=arm64 \
