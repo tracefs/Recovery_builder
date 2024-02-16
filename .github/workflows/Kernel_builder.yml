@@ -15,7 +15,7 @@ on:
 
 env:
 
-  KS_LINK: https://github.com/tracefs/android_kernel_xiaomi_mt6768/ -b nethunter
+  KS_LINK: https://github.com/burhancodes/BlackSapphire -b 13
   Device: lancelot
   
 
